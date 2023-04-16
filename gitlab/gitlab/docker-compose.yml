@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  # gitlab用のコンテナ
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    hostname: gitlab
+    restart: always
+    ports:
+      - "9001:443"
+      - "9000:80"
+    volumes:
+      - ./gitlab/config:/etc/gitlab
+      - ./gitlab/logs:/var/log/gitlab
+      - ./gitlab/data:/var/opt/gitlab

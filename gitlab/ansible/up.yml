@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: up gitlab
+      shell: docker-compose up -d
+      args:
+        chdir: ../gitlab
+    - name: up gitlab-runner
+      shell: docker-compose up -d
+      args:
+        chdir: ../gitlab-runner

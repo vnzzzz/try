@@ -1,0 +1,5 @@
+# local mount dir
+gitlab/*
+
+# gitkeep
+!.gitkeep
