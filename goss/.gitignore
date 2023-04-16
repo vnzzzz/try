@@ -1,0 +1,8 @@
+# goss
+**/files/goss
+
+# vagrant
+.vagrant
+
+# gitkeep
+!.gitkeep
