@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  juice-shop:
+    container_name: juice-shop
+    hostname: juice-shop
+    restart: always
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 80
+    networks:
+      - web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.juice-shop.entrypoints=web
+      - traefik.http.routers.juice-shop.rule=PathPrefix(`/juice-shop`)
+      - traefik.http.routers.juice-shop.middlewares=strip-prefix-juice-shop
+      - traefik.http.middlewares.strip-prefix-juice-shop.stripprefixregex.regex=/juice-shop
+
+networks:
+  web:
+    name: docker-mgr_web
+    external: true
