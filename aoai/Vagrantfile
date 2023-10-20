@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  vm_name = "aoai-client"
+
+  config.vm.define vm_name do |s|
+
+    # hostname
+    s.vm.hostname = vm_name
+    # os
+    s.vm.box = "ubuntu/focal64"
+    # network
+    private_ip = "192.168.10.10"
+    s.vm.network "private_network", ip: private_ip
+
+    # spec
+    s.vm.provider "virtualbox" do |v|
+      v.gui = false        
+      v.cpus = 2
+      v.memory = 4096
+    end
+
+    # common setup
+    s.vm.provision :shell, :path => "./shell/common.sh"
+  end
+end

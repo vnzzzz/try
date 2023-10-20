@@ -1,0 +1,8 @@
+# django
+django/code/*
+
+# postgres
+postgres/data/*
+
+# gitkeep
+!.gitkeep
